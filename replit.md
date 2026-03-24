@@ -19,18 +19,28 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 ## Structure
 
 ```text
-artifacts-monorepo/
-├── artifacts/              # Deployable applications
-│   └── api-server/         # Express API server
-├── lib/                    # Shared libraries
+workspace/
+├── android/                # Flutter Android platform files
+├── ios/                    # Flutter iOS platform files
+├── linux/                  # Flutter Linux desktop runner
+├── macos/                  # Flutter macOS desktop runner
+├── web/                    # Flutter web platform files
+├── windows/                # Flutter Windows desktop runner
+├── assets/                 # Flutter assets
+├── lib/                    # Flutter Dart source + shared TS libraries
+│   ├── main.dart           # Flutter app entry point (Cobalt-Forensic)
 │   ├── api-spec/           # OpenAPI spec + Orval codegen config
 │   ├── api-client-react/   # Generated React Query hooks
 │   ├── api-zod/            # Generated Zod schemas from OpenAPI
 │   └── db/                 # Drizzle ORM schema + DB connection
+├── test/                   # Flutter widget tests
+├── artifacts/              # Deployable Node.js applications
+│   └── api-server/         # Express API server
 ├── scripts/                # Utility scripts (single workspace package)
-│   └── src/                # Individual .ts scripts, run via `pnpm --filter @workspace/scripts run <script>`
-├── pnpm-workspace.yaml     # pnpm workspace (artifacts/*, lib/*, lib/integrations/*, scripts)
-├── tsconfig.base.json      # Shared TS options (composite, bundler resolution, es2022)
+├── pubspec.yaml            # Flutter project manifest (Cobalt-Forensic)
+├── analysis_options.yaml   # Dart lint rules
+├── pnpm-workspace.yaml     # pnpm workspace config
+├── tsconfig.base.json      # Shared TS options
 ├── tsconfig.json           # Root TS project references
 └── package.json            # Root package with hoisted devDeps
 ```
